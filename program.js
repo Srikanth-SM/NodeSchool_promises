@@ -4,7 +4,7 @@ require('es6-promise');
 //	console.log("TIMED OUT!");
 //},300);
 
-let promise = new Promise(function(fulfill,reject){
+let     promise = new Promise(function(fulfill,reject){
 	setTimeout(function(){
 	fulfill('FULFILLED!');
 },300);
