@@ -17,7 +17,7 @@ function reject(error){
 }*/
 
 //To reject or not to reject
-let promise = new Promise(function(resolve,reject){
+/*let promise = new Promise(function(resolve,reject){
 	resolve('I FIRED');
 	reject(new Error('I AM NOT FIRED'));
 });
@@ -27,4 +27,22 @@ function OnReject(error){
 }
 
 promise.then(console.log,OnReject);
+*/
 
+//Always asynchronous
+
+let promise = new Promise(function(resolve,reject){
+	resolve('PROMISE VALUE');
+})
+
+function successHandler(success){
+	console.log(success);
+}
+
+function failureHandler(error){
+	console.log(error.message);
+}
+
+promise.then(successHandler,failureHandler);
+
+console.log('MAIN PROGRAM');
