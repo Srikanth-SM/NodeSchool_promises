@@ -72,6 +72,7 @@ function onFullfilled(res){
 
 //Values and promises
 
+/*
 function attachTitle(title){
 	return 'DR. '+title;
 }
@@ -80,4 +81,42 @@ let promise = Promise.resolve('MANHATTAN');
 promise
 .then(attachTitle)
 .then(console.log);
+*/
+
+// Throw an error
+
+function parsePromised(json){
+//	console.log(json);
+return new Promise(function(resolve,reject){
+	try{
+	let parsedJSON = JSON.parse(json);
+	//console.log('parsed',parsedJSON);
+//	resolve(parsedJSON);
+	}
+	catch(e){
+	//console.log('inside catch',e);
+	reject(e.message);
+	}
+}
+)}
+
+/*
+function parsePromised(json) {
+  return new Promise(function (fulfill, reject) {
+    try {
+      fulfill(JSON.parse(json));
+    } catch (e) {
+      reject(e);
+    }
+  });
+}
+
+function onReject(error) {
+  console.log(error.message);
+}
+
+parsePromised(process.argv[2])
+.then(null, onReject);
+*/
+parsePromised(process.argv[2]).then(console.log,console.log);
 
