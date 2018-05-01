@@ -31,7 +31,7 @@ promise.then(console.log,OnReject);
 
 //Always asynchronous
 
-let promise = new Promise(function(resolve,reject){
+/*let promise = new Promise(function(resolve,reject){
 	resolve('PROMISE VALUE');
 })
 
@@ -42,6 +42,13 @@ function successHandler(success){
 function failureHandler(error){
 	console.log(error.message);
 }
+*/
+
+//shortcuts
+
+
+let promise = Promise.resolve('I FIRED');
+promise.catch((err)=>{console.log("there is an error");console.log(err.message);});
 
 promise.then(successHandler,failureHandler);
 
