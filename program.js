@@ -46,10 +46,26 @@ function failureHandler(error){
 
 //shortcuts
 
-
+/*
 let promise = Promise.resolve('I FIRED');
 promise.catch((err)=>{console.log("there is an error");console.log(err.message);});
 
 promise.then(successHandler,failureHandler);
 
 console.log('MAIN PROGRAM');
+*/
+//Promise after promise
+
+
+let promise = first()
+                .then(firstResult=>{
+                return second(firstResult);
+})
+.then(secondResult=>{
+        onFullfilled(secondResult);
+});
+
+function onFullfilled(res){
+        console.log(res);
+}
+
