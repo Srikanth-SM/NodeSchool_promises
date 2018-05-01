@@ -54,9 +54,10 @@ promise.then(successHandler,failureHandler);
 
 console.log('MAIN PROGRAM');
 */
+
 //Promise after promise
 
-
+/*
 let promise = first()
                 .then(firstResult=>{
                 return second(firstResult);
@@ -67,5 +68,16 @@ let promise = first()
 
 function onFullfilled(res){
         console.log(res);
+}*/
+
+//Values and promises
+
+function attachTitle(title){
+	return 'DR. '+title;
 }
+
+let promise = Promise.resolve('MANHATTAN');
+promise
+.then(attachTitle)
+.then(console.log);
 
