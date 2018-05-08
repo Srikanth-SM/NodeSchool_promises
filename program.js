@@ -4,6 +4,7 @@ require('es6-promise');
 //	console.log("TIMED OUT!");
 //},300);
 
+
 /*let     promise = new Promise(function(fulfill,reject){
 	setTimeout(function(){
 	reject(new Error('REJECTED!'));
@@ -218,3 +219,10 @@ return new Promise(function(resolve,reject){
 
 all(getPromise1(),getPromise2())
 .then(console.log);
+=======
+let promise = new Promise(function(fulfill,reject){
+	setTimeout(function(){
+	fulfill('FULFILLED!');
+},300);
+}).then(result=>console.log(result));
+>>>>>>> 3d33e1c6728351815d694b5ad0b1ffa31d195476
