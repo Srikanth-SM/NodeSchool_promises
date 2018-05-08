@@ -85,6 +85,7 @@ promise
 
 // Throw an error
 
+/*
 function parsePromised(json){
 //	console.log(json);
 return new Promise(function(resolve,reject){
@@ -99,6 +100,7 @@ return new Promise(function(resolve,reject){
 	}
 }
 )}
+*/
 
 /*
 function parsePromised(json) {
@@ -118,5 +120,101 @@ function onReject(error) {
 parsePromised(process.argv[2])
 .then(null, onReject);
 */
-parsePromised(process.argv[2]).then(console.log,console.log);
+//parsePromised(process.argv[2]).then(console.log,console.log);
 
+
+//IMPORTANT RULE
+/*
+function alwaysThrows(){
+	throw new Error('OH NOES');
+}
+
+function iterate(i){
+	console.log(i);
+	return i+1;
+}
+
+let promise = Promise.resolve(iterate(1));
+promise
+.then(iterate)
+.then(iterate)
+.then(iterate)
+.then(iterate)
+
+.then(alwaysThrows)
+.then(iterate)
+.then(iterate)
+.then(iterate)
+.then(iterate)
+.catch((e)=>console.log(e.message));
+*/
+
+
+
+//important revision
+
+function alwaysThrows(){
+	throw new Error('OH NOES');
+}
+
+function iterate(i){
+	console.log(i);
+	return i+1;
+}
+
+/*
+let promise = Promise.resolve(iterate(1));
+
+promise
+.then(iterate)
+.then(iterate)
+.then(iterate)
+.then(iterate)
+
+.then(alwaysThrows)
+.then(iterate)
+.then(iterate)
+.then(iterate)
+.then(iterate)
+.then(null,error);
+
+function error(e){
+	console.log(e.message);
+}
+
+*/
+
+
+function all(promise1,promise2){
+var counter = 0;
+
+
+
+return new Promise(function(resolve,reject){
+	var arr=[];
+	promise1.then((res)=>{
+//		console.log(res);
+		counter++;
+		arr[0]=res;
+//		console.log(arr);
+		if(counter>=2){
+		resolve(arr);
+		}
+	});
+	promise2.then((res)=>{
+		counter++;
+//		console.log('p2',res);
+		arr[1]=res;
+//		console.log(arr);
+		if(counter>=2){
+			resolve(arr);
+		}
+	})
+
+});
+}
+
+
+
+all(getPromise1(),getPromise2())
+.then(console.log);
